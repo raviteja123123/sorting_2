@@ -1,3 +1,4 @@
+//programe starts
 import sys
 class stacks:
     stack=[]
