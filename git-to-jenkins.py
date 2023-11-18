@@ -16,8 +16,19 @@ args = parser.parse_args()
 print(f"{args.I}{args.O}")
 
 #print(f"aws configureation :{os.system("aws configure list")}")
-os.system("export AWS_ACCESS_KEY_ID=AKIATYIPWP4CLF3G2ZVO")
-os.system("export AWS_SECRET_ACCESS_KEY=args.awsp")
+#os.environ["AWS_ACCESS_KEY_ID"] = "AKIATYIPWP4CLF3G2ZVO"
+#os.environ["AWS_SECRET_ACCESS_KEY"] = args.awsp
+
+
+# Check if AWS_SECRET_ACCESS_KEY is provided
+if args.awsp is not None:
+    # Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+    os.environ["AWS_ACCESS_KEY_ID"] = "AKIATYIPWP4CLF3G2ZVO"
+    os.environ["AWS_SECRET_ACCESS_KEY"] = args.awsp
+    print("Environment variables set successfully.")
+else:
+    print("AWS_SECRET_ACCESS_KEY not provided. Please provide a value.")
+
 os.system("aws configure list")
-#os.system("aws s3 ls humanetics-bucket-nov-15")
+os.system("aws s3 ls humanetics-bucket-nov-15")
 
