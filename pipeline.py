@@ -35,7 +35,8 @@ def pipeline(role_arn=None,bucket=None,processing_script=None,utils_folder=None,
 
     processing_step = ProcessingStep(
         name="DataPreprocessing",
-        code=f"{processing_script} --bucket_name {bucket}",
+        #code=f"{processing_script} --bucket_name {bucket}",
+        code=processing_script,
         processor=script_processor,
         inputs=[ProcessingInput(source=input_data, destination="/opt/ml/processing/input"),
                 ProcessingInput(source=utils_folder, destination="/opt/ml/processing/input/code/utils")],
