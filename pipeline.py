@@ -35,12 +35,12 @@ def pipeline(role_arn=None,bucket=None,processing_script=None,utils_folder=None,
 
     processing_step = ProcessingStep(
         name="DataPreprocessing",
-        code=processing_script,
+        code=f"{processing_script} --bucket_name {bucket}",
         processor=script_processor,
         inputs=[ProcessingInput(source=input_data, destination="/opt/ml/processing/input"),
                 ProcessingInput(source=utils_folder, destination="/opt/ml/processing/input/code/utils")],
         outputs=[ProcessingOutput(output_name="train_data", source="/opt/ml/processing/output")],
-        code_arguments=["--bucket_name",bucket ],
+        #code_arguments=["--bucket_name",bucket ],
     )
 
     # Step 2: Model Training
