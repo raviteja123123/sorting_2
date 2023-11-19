@@ -9,7 +9,7 @@ from sagemaker.workflow.steps import ProcessingStep, TrainingStep
 from sagemaker.workflow.pipeline import Pipeline
 
 
-pipeline(args.r,args.s3_bucket,args.p,args.u,args.pu,args.tu,args.pn,args.rd,args.pi,args.ti)
+
 def pipeline(role_arn=None,bucket=None,processing_script=None,utils_folder=None,processing_image=None,training_image=None,pipeline_name=None,raw_data=None,processing_instance=None,training_instance=None,training_data=None):
     # Set up SageMaker session and role
     sagemaker_session = sagemaker.Session()
