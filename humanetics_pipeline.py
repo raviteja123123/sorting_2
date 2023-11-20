@@ -13,7 +13,7 @@ from sagemaker.workflow.pipeline import Pipeline
 def pipeline(role_arn=None,bucket=None,processing_script=None,utils_folder=None,processing_image=None,training_image=None,pipeline_name=None,raw_data=None,processing_instance=None,training_instance=None,training_data=None,model_name=None,feature_name=None):
     # Set up SageMaker session and role
     sagemaker_session = sagemaker.Session()
-
+    print(f"role:{role_arn}\n")
     # Set the SageMaker execution role ARN
     #role_arn = "arn:aws:iam::258267840260:role/service-role/SageMaker-sagemaker_custom_nov10_v1"
 
@@ -56,7 +56,7 @@ def pipeline(role_arn=None,bucket=None,processing_script=None,utils_folder=None,
         "bucket": bucket,
         "model_name": model_name,
         "feature": feature_name
-    }
+        }
     )
 
     training_step = TrainingStep(
@@ -105,6 +105,6 @@ if __name__=="__main__":
     arguments.add_argument('-m',help="please give you model name")
 
     args=arguments.parse_args()
-    pipeline(args.r,args.s3_bucket,args.p,args.u,args.pu,args.tu,args.pn,args.rd,args.pi,args.ti,args.prd,args.f,args.m)
+    pipeline(args.r,args.s3_bucket,args.p,args.u,args.pu,args.tu,args.pn,args.rd,args.pi,args.ti,args.prd,args.m,args.f)
 
 
